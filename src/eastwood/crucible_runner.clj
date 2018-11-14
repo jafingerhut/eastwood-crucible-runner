@@ -4,6 +4,10 @@
             [clojure.string :as str]))
 
 
+(defn- accumulate [m k v]
+  (update-in m [k] (fnil conj #{}) v))
+
+
 (def cli-options
   [
    ["-d" "--dir DIRNAME" "Name of the directory containing tests. Defaults to \"test\"."
